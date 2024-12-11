@@ -39,7 +39,9 @@ cd employee-management-system
 2. **Install Dependencies**
 
 ```bash
-npm install
+npm install node
+npm install mysql
+npm install express
 ```
 
 3. **Configure Database Connection**

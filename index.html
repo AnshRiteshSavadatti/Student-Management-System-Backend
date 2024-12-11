@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EMS</title>
+    <style>
+      /* primary color : #ffca67 
+            tint : #ffd079;
+            tint2 : #ffd58a;
+        */
+
+      :root {
+        --primary-color: #f08c00;
+        --tint-1: #f5a456;
+        --tint-2: #f9bc85;
+        --tint-3: #fff4eb;
+        --shade-1: #d17900;
+        --shade-2: #955500;
+      }
+      html {
+        font-size: 68.5%;
+      }
+      body {
+        font-size: 1.8rem;
+        font-family: sans-serif;    
+        color: #444;
+        font-style: italic;
+        background-color: var(--tint-3);
+      }
+      .hero-section {
+        background-color: var(--tint-2);
+        border-radius: 72px;
+        padding: 3.6rem 7.2rem;
+        display: flex;
+        font-weight: 400;
+        margin: 1.2rem 2.4rem;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      header h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 8.6rem;
+        width: 720px;
+        font-weight: 800;
+        color: #444;
+      }
+
+      .btn--1 {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 24px;
+        margin: 24px 48px;
+      }
+      .btn--2 {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
+        padding: 36px 72px;
+        margin: 36px 62px;
+      }
+      a,
+      button,
+      input {
+        display: inline-block;
+        padding: 12px 24px;
+        border-radius: 40px;
+        border: 1px solid var(--shade-1);
+        background-color: var(--tint-1);
+        font-size: 1.8rem;
+        font-family: inherit;
+        color: #444;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .form1,
+      .form2 {
+        background-color: var(--tint-2);
+        border-radius: 30px;
+        padding: 32px 64px;
+      }
+
+      .main {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .hide {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero-section">
+      <header>
+        <h1>Employee Management System</h1>
+      </header>
+      <nav class="btn--1">
+        <form action="/view" method="POST">
+          <button type="submit">Employee details</button>
+        </form>
+
+        <div>
+          <a href="delete.html">Delete details</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="btn--1">
+      <button onclick="handleClickFill()" class="btn-1">Fill Details 📃</button>
+      <button onclick="handleClickUpdate()" class="btn-2">
+        Update Details 📃
+      </button>
+    </div>
+    <div class="btn--2">
+      <form action="/insert" method="post" class="main form1">
+        <div>
+          <label for="fname">First Name</label>
+          <input type="text" name="fname" placeholder="Ansh" /><br />
+        </div>
+
+        <div>
+          <label for="lname">Last Name</label>
+          <input type="text" name="lname" placeholder="Savadatti" /> <br />
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input type="mail" name="email" placeholder="ansh@mail.com" /><br />
+        </div>
+
+        <div>
+          <label for="phone">Phone</label>
+          <input type="text" name="phone" placeholder="1234567890" /><br />
+        </div>
+
+        <div>
+          <label for="department">Department</label>
+          <input type="text" name="department" placeholder="CSE" /><br />
+        </div>
+
+        <div>
+          <label for="joiningDate">Joining date</label>
+          <input type="date" name="joiningDate" placeholder="12-1-2000" /><br />
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <!-- update -->
+      <form action="/update" method="post" class="main hide form2">
+        <div>
+          <label for="fname">First Name</label>
+          <input type="text" name="fname" placeholder="Ansh" /><br />
+        </div>
+
+        <div>
+          <label for="lname">Last Name</label>
+          <input type="text" name="lname" placeholder="Savadatti" /> <br />
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input type="mail" name="email" placeholder="ansh@mail.com" /><br />
+        </div>
+
+        <div>
+          <label for="phone">Phone</label>
+          <input type="text" name="phone" placeholder="1234567890" /><br />
+        </div>
+
+        <div>
+          <label for="department">Department</label>
+          <input type="text" name="department" placeholder="CSE" /><br />
+        </div>
+
+        <div>
+          <label for="joiningDate">Joining date</label>
+          <input type="date" name="joiningDate" placeholder="12-1-2000" /><br />
+        </div>
+
+        <div>
+          <label for="empID">Employee ID</label>
+          <input type="number" name="empID" placeholder="1" />
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <script>
+      const form1 = document.querySelector(".form1");
+      const form2 = document.querySelector(".form2");
+
+      function handleClickFill() {
+        form1.classList.remove("hide");
+        form2.classList.add("hide");
+      }
+
+      function handleClickUpdate() {
+        form1.classList.add("hide");
+        form2.classList.remove("hide");
+      }
+
+      function scrollToElement(targetSelector) {
+        const targetElement = document.querySelector(targetSelector);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: "smooth", // Smooth scrolling
+            block: "start", // Aligns the target to the top of the viewport
+          });
+        } else {
+          console.error(`Element with selector "${targetSelector}" not found.`);
+        }
+      }
+
+      document.querySelector(".btn-1").addEventListener("click", () => {
+        scrollToElement(".form1"); 
+      });
+      document.querySelector(".btn-2").addEventListener("click", () => {
+        scrollToElement(".form2"); 
+      });
+    </script>
+  </body>
+</html>

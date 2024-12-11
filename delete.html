@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --primary-color: #f08c00;
+        --tint-1: #f5a456;
+        --tint-2: #f9bc85;
+        --tint-3: #fff4eb;
+        --shade-1: #d17900;
+        --shade-2: #955500;
+      }
+      html {
+        font-size: 68.5%;
+      }
+
+      body {
+        font-size: 1.8rem;
+        font-family: sans-serif;
+        color: #444;
+        font-style: italic;
+        background-color: var(--tint-3);
+      }
+
+      .hero-section {
+        background-color: var(--tint-2);
+        border-radius: 72px;
+        padding: 3.6rem 7.2rem;
+        display: flex;
+        font-weight: 400;
+        margin: 4.8rem 2.4rem;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      header h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 8.6rem;
+        width: 720px;
+        font-weight: 800;
+        color: #444;
+      }
+
+      span {
+        font-size: 2.8rem;
+      }
+
+      a,
+      button,
+      input {
+        display: inline-block;
+        padding: 12px 24px;
+        border-radius: 40px;
+        border: 1px solid var(--shade-1);
+        background-color: var(--tint-1);
+        font-size: 1.8rem;
+        font-family: inherit;
+        color: #444;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 7.2rem 5.6rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero-section">
+      <h1>Employee Management System</h1>
+      <button class="scroll">Delete Employee</button>
+    </header>
+    <form action="/delete" method="POST">
+      <span>Click to Delete the details</span>
+      <input type="number" name="empID" placeholder="1" />
+      <button type="submit">Delete</button>
+    </form>
+    <script>
+      function scrollToTarget(tagrgetElement) {
+        const target = document.querySelector(tagrgetElement);
+        if (target) {
+          target.scrollIntoView({
+            behaviour: "smooth",
+            block: "start",
+          });
+        }
+      }
+      const target = document
+        .querySelector(".scroll")
+        .addEventListener("click", () => {
+          scrollToTarget("form");
+        });
+    </script>
+  </body>
+</html>
